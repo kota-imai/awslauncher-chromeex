@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/typehead.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class='p-2'>
+      <span class="ml-2"><img src="icon/rocket.png"></span>
+
+      <!-- REGION SELECTOR -->
+      <span style="float: right;">
+        <label style="color: #fff;">Rg : </label>
+        <select class="form-select region-select" aria-label="Default select" tabindex="2">
+        </select>
+      </span>
+
+    </header>
+
+    
+    <!-- SERVICES SEARCH -->
+    <div class="m-3">
+      <div id="bloodhound" class="form-group">
+        <form method="post" id="form">
+          <input name="service-name" type="text" class="form-control service-select" placeholder="Service Name..." tabindex="1">
+          <input type="submit" style="display: none;">
+        </form>
+      </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="script/lib/jquery.min.js"></script>
+    <!-- typehead -->
+    <script src="script/lib/typehead.bundle.js"></script>
+    <script src="script/lib/handlebars.js"></script>
+    <!-- myscript -->
+    <script src="script/popup.js"></script>
+    
+  </body>
+</html>
