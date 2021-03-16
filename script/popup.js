@@ -16,7 +16,7 @@ getJSON("data/region.json")
             }
             parentEl.append(el);
         }
-    });
+    }); 
 
 
 // Service List init
@@ -24,12 +24,6 @@ getJSON("data/services.json")
     .then(data => {
         var services = JSON.parse(data);
         var history = JSON.parse(localStorage.getItem('service'));
-        var engine = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: services,
-        });
-
         $('#bloodhound .service-select').typeahead({
             hint: true,
             highlight: true,
@@ -38,6 +32,7 @@ getJSON("data/services.json")
             {
                 name: 'name',
                 display: 'name',
+                limit: 10,
                 source: servicesWithDefaults,
                 templates: {
                     empty: '<p class="m-2">No results found</p>',
@@ -46,10 +41,51 @@ getJSON("data/services.json")
                         return `<div class="m-1"><img class="aws-icons mr-4" src="${imgpath}">${data.name}</div>`;
                     }
                 }
-            }
-        );
+            }).bind('typeahead:select', function (ev, suggestion) {
+                var region = document.getElementsByClassName('region-select')[0].value;
+                openNewTab(suggestion.name, suggestion.url, region)
+            }).bind('typeahead:close', function () {
+                var query = document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
+                var engine = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: services,
+                });
+                engine.initialize()
+                    .then(function () {
+                        engine.search(query, function (results) {
+                            if (results.length === 0) return;
+                            var region = document.getElementsByClassName('region-select')[0].value;
+                            openNewTab(results[0].name, results[0].url, region);
+                        });
+                    });
+            });
+        
+        $('form').submit(function () { 
+            var query = document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
+            if (query.length === 0) return false;
+            var engine = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: services,
+            });
+            engine.initialize()
+                .then(function () {
+                    engine.search(query, function (results) {
+                        if (results.length === 0) return false;
+                        var region = document.getElementsByClassName('region-select')[0].value;
+                        openNewTab(results[0].name, results[0].url, region);
+                    });
+                })
+        });
+
 
         function servicesWithDefaults(q, sync) {
+            var engine = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: services,
+            });
             if (q.length > 0) {
                 return engine.search(q, sync);
             }
@@ -66,50 +102,35 @@ getJSON("data/services.json")
             }
         }
 
-
-        document.getElementById("form").addEventListener("submit", event => {
-            var sname = event.target.elements.namedItem('service-name').value;
-            var surl = '';
-            var cnt = 0;
-            var region = document.getElementsByClassName('region-select')[0].value
-            while (cnt < services.length) {
-                if (services[cnt].name === sname) {
-                    surl = services[cnt].url
-                    chrome.runtime.sendMessage({ type: 'open', url: surl, region: region }, (res) => {
-                        // Save in local storage
-                        if (res.status === 'ok') {
-                            if (history) {
-                                // cut off when history data is too long
-                                if (history.length > 100) {
-                                    history = history.splice(0, 100);
-                                }
-                                localStorage.setItem('region', region);
-                                localStorage.setItem('service', JSON.stringify([{ name: sname, url: surl }].concat(history)));
-                                return;
-                            } else {
-                                localStorage.setItem('region', region);
-                                localStorage.setItem('service', JSON.stringify({ name: sname, url: surl }));
-                                return;
-                            }
+        function openNewTab(serviceName, serviceUrl, region) {
+            chrome.runtime.sendMessage({ type: 'open', url: serviceUrl, region: region }, (res) => {
+                // Save in local storage
+                if (res.status === 'ok') {
+                    if (history) {
+                        // cut off when history data is too long
+                        if (history.length > 100) {
+                            history = history.splice(0, 100);
                         }
-                    });
-                    break;
+                        localStorage.setItem('region', region);
+                        localStorage.setItem('service', JSON.stringify([{ name: serviceName, url: serviceUrl }].concat(history)));
+                        return;
+                    } else {
+                        localStorage.setItem('region', region);
+                        localStorage.setItem('service', JSON.stringify({ name: serviceName, url: serviceUrl }));
+                        return;
+                    }
                 }
-                cnt++
-            }
-
-
-        });
-
+            });
+        }
 
     });
 
 
 // autofocus
-$(document).ready(function () {
-    $('input:visible').eq(1).select();
-    $('input:visible').eq(1).focus();
-});
+// $(document).ready(function () {
+//     $('input:visible').eq(1).select();
+//     $('input:visible').eq(1).focus();
+// });
 
 
 function getJSON(filename) {
