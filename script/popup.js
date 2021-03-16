@@ -62,7 +62,7 @@ getJSON("data/services.json")
                             if (results.length === 0) return;
                             var region = document.getElementsByClassName('region-select')[0].value;
                             if (opened === 0) { 
-                                openNewTab(suggestion.name, suggestion.url, region);
+                                openNewTab(results[0].name, results[0].url, region);
                                 opened++;
                             }
                         });
@@ -83,7 +83,7 @@ getJSON("data/services.json")
                         if (results.length === 0) return false;
                         var region = document.getElementsByClassName('region-select')[0].value;
                         if (opened === 0) { 
-                            openNewTab(suggestion.name, suggestion.url, region);
+                            openNewTab(results[0].name, results[0].url, region);
                             opened++;
                         }
                     });
@@ -114,9 +114,11 @@ getJSON("data/services.json")
         }
 
         function openNewTab(serviceName, serviceUrl, region) {
+            if (opened > 0) return;
             chrome.runtime.sendMessage({ type: 'open', url: serviceUrl, region: region }, (res) => {
                 // Save in local storage
                 if (res.status === 'ok') {
+                    opened++
                     if (history) {
                         // cut off when history data is too long
                         if (history.length > 100) {
