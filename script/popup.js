@@ -22,6 +22,7 @@ getJSON("data/region.json")
 // Service List init
 getJSON("data/services.json")
     .then(data => {
+        var opened = 0;
         var services = JSON.parse(data);
         var history = JSON.parse(localStorage.getItem('service'));
         $('#bloodhound .service-select').typeahead({
@@ -43,7 +44,11 @@ getJSON("data/services.json")
                 }
             }).bind('typeahead:select', function (ev, suggestion) {
                 var region = document.getElementsByClassName('region-select')[0].value;
-                openNewTab(suggestion.name, suggestion.url, region)
+                if (opened === 0) { 
+                    openNewTab(suggestion.name, suggestion.url, region);
+                    opened++;
+                }
+                
             }).bind('typeahead:close', function () {
                 var query = document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
                 var engine = new Bloodhound({
@@ -56,7 +61,10 @@ getJSON("data/services.json")
                         engine.search(query, function (results) {
                             if (results.length === 0) return;
                             var region = document.getElementsByClassName('region-select')[0].value;
-                            openNewTab(results[0].name, results[0].url, region);
+                            if (opened === 0) { 
+                                openNewTab(suggestion.name, suggestion.url, region);
+                                opened++;
+                            }
                         });
                     });
             });
@@ -74,7 +82,10 @@ getJSON("data/services.json")
                     engine.search(query, function (results) {
                         if (results.length === 0) return false;
                         var region = document.getElementsByClassName('region-select')[0].value;
-                        openNewTab(results[0].name, results[0].url, region);
+                        if (opened === 0) { 
+                            openNewTab(suggestion.name, suggestion.url, region);
+                            opened++;
+                        }
                     });
                 })
         });
