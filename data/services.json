@@ -183,5 +183,6 @@
     {"url":"https://{{REGION}}.console.aws.amazon.com/workspaces/home?region={{REGION}}", "name":"WorkSpaces"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/xray/home?region={{REGION}}", "name":"X-Ray"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/ec2/v2/home?region={{REGION}}#LoadBalancers", "name":"ELB"},
-    {"url":"https://{{REGION}}.console.aws.amazon.com/cloudwatch/home?region={{REGION}}#logsV2:home", "name":"CloudWatch Logs"}
+    {"url":"https://{{REGION}}.console.aws.amazon.com/cloudwatch/home?region={{REGION}}#logsV2:home", "name":"CloudWatch Logs"},
+    {"url":"https://{{REGION}}.console.aws.amazon.com/cloudwatch/home?region={{REGION}}#events:", "name":"CloudWatch Events"}
 ]

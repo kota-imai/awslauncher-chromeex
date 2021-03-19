@@ -44,10 +44,9 @@ getJSON("data/services.json")
                 }
             }).bind('typeahead:select', function (ev, suggestion) {
                 var region = document.getElementsByClassName('region-select')[0].value;
-                if (opened === 0) { 
-                    openNewTab(suggestion.name, suggestion.url, region);
-                    opened++;
-                }
+                if (opened > 0) return;
+                openNewTab(suggestion.name, suggestion.url, region);
+                opened++;
                 
             }).bind('typeahead:close', function () {
                 var query = document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
@@ -61,10 +60,11 @@ getJSON("data/services.json")
                         engine.search(query, function (results) {
                             if (results.length === 0) return;
                             var region = document.getElementsByClassName('region-select')[0].value;
-                            if (opened === 0) { 
-                                openNewTab(results[0].name, results[0].url, region);
-                                opened++;
+                            if (opened > 0) { 
+                                return;
                             }
+                            openNewTab(results[0].name, results[0].url, region);
+                            opened++;
                         });
                     });
             });
@@ -82,13 +82,12 @@ getJSON("data/services.json")
                     engine.search(query, function (results) {
                         if (results.length === 0) return false;
                         var region = document.getElementsByClassName('region-select')[0].value;
-                        if (opened === 0) { 
-                            openNewTab(results[0].name, results[0].url, region);
-                            opened++;
-                        }
+                        if (opened > 0) return false;
+                        openNewTab(results[0].name, results[0].url, region);
+                        opened++;
                     });
                 })
-        });
+        }); 
 
 
         function servicesWithDefaults(q, sync) {
@@ -139,11 +138,12 @@ getJSON("data/services.json")
     });
 
 
-// autofocus
-// $(document).ready(function () {
-//     $('input:visible').eq(1).select();
-//     $('input:visible').eq(1).focus();
-// });
+// focus on searchbox
+$(document).ready(function () {
+    $('input:visible').eq(1).select();
+    if (!document.hasFocus()) location.reload();
+});
+
 
 
 function getJSON(filename) {
