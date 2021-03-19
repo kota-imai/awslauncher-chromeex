@@ -68,7 +68,6 @@
     {"url":"https://iq.aws.amazon.com/?utm=csl", "name":"AWS IQ"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/lakeformation/home?region={{REGION}}", "name":"AWS Lake Formation"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/license-manager/home?region={{REGION}}", "name":"AWS License Manager"},
-    {"url":"https://console.aws.amazon.com/marketplace/home?region={{REGION}}", "name":"AWS Marketplace Subscriptions"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/migrationhub/home?region={{REGION}}", "name":"AWS Migration Hub"},
     {"url":"https://console.aws.amazon.com/organizations/home?region={{REGION}}", "name":"AWS Organizations"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/outposts/home?region={{REGION}}", "name":"AWS Outposts"},

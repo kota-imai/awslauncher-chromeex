@@ -139,10 +139,10 @@ getJSON("data/services.json")
 
 
 // focus on searchbox
-// $(document).ready(function () {
-//     $('input:visible').eq(1).select();
-//     if (!document.hasFocus()) location.reload();
-// });
+$(document).ready(function () {
+    $('input:visible').eq(1).select();
+    if (!document.hasFocus()) location.reload();
+});
 
 
 
