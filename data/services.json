@@ -181,5 +181,7 @@
     {"url":"https://{{REGION}}.console.aws.amazon.com/worklink/home?region={{REGION}}", "name":"WorkLink"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/workmail/v2/home?region={{REGION}}", "name":"WorkMail"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/workspaces/home?region={{REGION}}", "name":"WorkSpaces"},
-    {"url":"https://{{REGION}}.console.aws.amazon.com/xray/home?region={{REGION}}", "name":"X-Ray"}
+    {"url":"https://{{REGION}}.console.aws.amazon.com/xray/home?region={{REGION}}", "name":"X-Ray"},
+    {"url":"https://{{REGION}}.console.aws.amazon.com/ec2/v2/home?region={{REGION}}#LoadBalancers", "name":"ELB"},
+    {"url":"https://{{REGION}}.console.aws.amazon.com/cloudwatch/home?region={{REGION}}#logsV2:home", "name":"CloudWatch Logs"}
 ]
