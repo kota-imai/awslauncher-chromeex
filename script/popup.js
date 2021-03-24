@@ -137,11 +137,21 @@ getJSON("data/services.json")
 
     });
 
-
+    
 // focus on searchbox
-$(document).ready(function () {
-    $('input:visible').eq(1).select();
-    if (!document.hasFocus()) location.reload();
+$('#searchbox').ready(function () {
+    var wait = (sec) => {
+        return function () {
+            return new Promise(function (resolve) {
+                setTimeout(resolve, sec * 1000)
+            });
+        }
+    };
+    Promise.resolve()
+        .then(wait(0.05))
+        .then(function () {
+            $('input:visible').eq(1).select();
+        })
 });
 
 
