@@ -1,4 +1,4 @@
-[
+var REGIONS = [
     {
         "name": "US East (Ohio)",
         "region": "us-east-2"

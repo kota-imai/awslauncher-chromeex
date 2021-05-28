@@ -1,4 +1,4 @@
-[
+var RESOURCES = [
     {"url":"https://{{REGION}}.console.aws.amazon.com/console/home?region={{REGION}}", "name":"Management Console"},
     {"url":"https://console.aws.amazon.com/a4b/home?region={{REGION}}", "name":"Alexa for Business"},
     {"url":"https://{{REGION}}.console.aws.amazon.com/appflow/home?region={{REGION}}", "name":"Amazon AppFlow"},
