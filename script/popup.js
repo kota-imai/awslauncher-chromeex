@@ -1,3 +1,11 @@
+// Tracker init
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NCQ2K2FCGV');
+
+
+
 // Region Selector init
 var defaultRegion = 'us-east-1';
 if (localStorage.getItem('region')) {
