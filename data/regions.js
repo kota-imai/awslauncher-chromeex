@@ -1,102 +1,102 @@
 var REGIONS = [
   {
-    "name": "US East (Ohio)",
+    "name": "Ohio | us-east-2",
     "region": "us-east-2"
   },
   {
-    "name": "US East (N.Virginia)",
+    "name": "N.Virginia | us-east-1",
     "region": "us-east-1"
   },
   {
-    "name": "US West (N.California)",
+    "name": "N.California | us-west-1",
     "region": "us-west-1"
   },
   {
-    "name": "US West (Oregon)",
+    "name": "Oregon | us-west-2",
     "region": "us-west-2"
   },
   {
-    "name": "Africa (CapeTown)",
+    "name": "CapeTown | af-south-1",
     "region": "af-south-1"
   },
   {
-    "name": "Asia Pacific (HongKong)",
+    "name": "HongKong | ap-east-1",
     "region": "ap-east-1"
   },
   {
-    "name": "Asia  Pacific (Mumbai)",
+    "name": "Mumbai | ap-south-1",
     "region": "ap-south-1"
   },
   {
-    "name": "Asia Pacific (Osaka)",
+    "name": "Osaka | ap-northeast-3",
     "region": "ap-northeast-3"
   },
   {
-    "name": "Asia Pacific (Seoul)",
+    "name": "Seoul | ap-northeast-2",
     "region": "ap-northeast-2"
   },
   {
-    "name": "Asia Pacific (Singapore)",
+    "name": "Singapore | ap-southeast-1",
     "region": "ap-southeast-1"
   },
   {
-    "name": "Asia Pacific (Sydney)",
+    "name": "Sydney | ap-southeast-2",
     "region": "ap-southeast-2"
   },
   {
-    "name": "Asia Pacific (Tokyo)",
+    "name": "Tokyo | ap-northeast-1",
     "region": "ap-northeast-1"
   },
   {
-    "name": "Canada (Central)",
+    "name": "CanadaCentral | ca-central-1",
     "region": "ca-central-1"
   },
   {
-    "name": "China (Beijing)",
+    "name": "Beijing | cn-north-1",
     "region": "cn-north-1"
   },
   {
-    "name": "China (Ningxia)",
+    "name": "Ningxia | cn-northwest-1",
     "region": "cn-northwest-1"
   },
   {
-    "name": "Europe (Frankfurt)",
+    "name": "Frankfurt | eu-central-1",
     "region": "eu-central-1"
   },
   {
-    "name": "Europe (Ireland)",
+    "name": "Ireland | eu-west-1",
     "region": "eu-west-1"
   },
   {
-    "name": "Europe (London)",
+    "name": "London | eu-west-2",
     "region": "eu-west-2"
   },
   {
-    "name": "Europe (Milan)",
+    "name": "Milan | eu-south-1",
     "region": "eu-south-1"
   },
   {
-    "name": "Europe (Paris)",
+    "name": "Paris | eu-west-3",
     "region": "eu-west-3"
   },
   {
-    "name": "Europe (Stockholm)",
+    "name": "Stockholm | eu-north-1",
     "region": "eu-north-1"
   },
   {
-    "name": "MiddleEast (Bahrain)",
+    "name": "Bahrain | me-south-1",
     "region": "me-south-1"
   },
   {
-    "name": "SouthAmerica (SãoPaulo)",
+    "name": "SãoPaulo | sa-east-1",
     "region": "sa-east-1"
   },
   {
-    "name": "AWSGovCloud (US-East)",
+    "name": "AWSGovCloud | us-gov-east-1",
     "region": "us-gov-east-1"
   },
   {
-    "name": "AWSGovCloud (US-West)",
+    "name": "AWSGovCloud | us-gov-west-1",
     "region": "us-gov-west-1"
   }
 ]

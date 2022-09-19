@@ -21,6 +21,10 @@ header {
   max-height: 30px;
 }
 
+.aws-service-name{
+  font-size: 1.1rem;
+}
+
 .form-control:focus {
   border-color: #F37C23;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(233, 95, 32, 0.6);

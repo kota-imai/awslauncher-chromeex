@@ -1,28 +1,27 @@
 {
-    "manifest_version" : 2,
-    "name": "Simple AWS Launcher",
-    "description" : "Simple popup launcher for hundreds of AWS services. Just press ctrl(cmd)+shift+L, or click an icon to display.",
-    "version" : "1.1.2",
-    "background": {
-        "default_icon": "icon/38icon.png",
-        "page": "background.html"
-    },
-    "icons" : {
-        "38" :  "icon/38icon.png",
-        "48" :  "icon/48icon.png",
-        "128" : "icon/128icon.png"
-    },
-    "browser_action": {
-        "default_popup": "popup.html"
-    },
-    "commands": {
-        "_execute_browser_action": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+L",
-                "windows": "Ctrl+Shift+L",
-                "mac": "Command+Shift+L",
-                "linux": "Ctrl+Shift+L"
-            }
-        }
+  "manifest_version": 3,
+  "name": "Simple AWS Launcher",
+  "description": "Simple popup launcher for hundreds of AWS services. Just press ctrl(cmd)+shift+L, or click an icon to display.",
+  "version": "2.0.0",
+  "background": {
+    "service_worker": "script/background.js"
+  },
+  "icons": {
+    "38": "icon/38icon.png",
+    "48": "icon/48icon.png",
+    "128": "icon/128icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "windows": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L",
+        "linux": "Ctrl+Shift+L"
+      }
     }
+  }
 }
