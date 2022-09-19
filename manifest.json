@@ -15,10 +15,6 @@
     "browser_action": {
         "default_popup": "popup.html"
     },
-    "permissions": [
-        "tabs",
-        "storage"
-    ],
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {
