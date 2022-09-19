@@ -141,7 +141,6 @@ var RESOURCES = [
   { "url": "https://{{REGION}}.console.aws.amazon.com/launchwizard/home?region={{REGION}}", "name": "Launch Wizard" },
   { "url": "https://lightsail.aws.amazon.com/ls/webapp/home", "name": "Lightsail" },
   { "url": "https://{{REGION}}.console.aws.amazon.com/mwaa/home?region={{REGION}}", "name": "Managed Apache Airflow" },
-  { "url": "https://console.aws.amazon.com/managedservices/home?region={{REGION}}", "name": "Managed Services" },
   { "url": "https://{{REGION}}.console.aws.amazon.com/mediaconnect/home?region={{REGION}}", "name": "MediaConnect" },
   { "url": "https://{{REGION}}.console.aws.amazon.com/mediaconvert/home?region={{REGION}}", "name": "MediaConvert" },
   { "url": "https://{{REGION}}.console.aws.amazon.com/medialive/home?region={{REGION}}", "name": "MediaLive" },
