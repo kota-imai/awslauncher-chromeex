@@ -1,5 +1,5 @@
 body {
-  width: 440px;
+  width: 460px;
   font-family: 'Hiragino Kaku Gothic Pro W3','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
 }
 
@@ -17,8 +17,8 @@ header {
 }
 
 .aws-icons{
-  height: 30px;
-  max-height: 30px;
+  height: 1.8rem;
+  max-height: 28px;
 }
 
 .aws-service-name{

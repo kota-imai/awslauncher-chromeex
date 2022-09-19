@@ -1,11 +1,3 @@
-// Tracker init
-// window.dataLayer = window.dataLayer || [];
-// function gtag(){dataLayer.push(arguments);}
-// gtag('js', new Date());
-// gtag('config', 'G-NCQ2K2FCGV');
-
-
-
 // Region Selector init
 var defaultRegion = 'us-east-1';
 if (localStorage.getItem('region')) {
@@ -26,7 +18,7 @@ for (r of REGIONS) {
 
 // Resource List init
 var opened = 0;
-const services = RESOURCES;
+const services = SERVICES;
 $('#bloodhound .service-select').typeahead({
   hint: true,
   highlight: true,
@@ -38,12 +30,20 @@ $('#bloodhound .service-select').typeahead({
     limit: 10,
     source: servicesWithDefaults,
     templates: {
-      empty: '<p class="m-2">No results found</p>',
+      empty: '<p class="my-2">No results found</p>',
       suggestion: function (data) {
         var imgpath = `../assets/${data.name.trim().replaceAll(' ', '')}.png`;
+        var keywords = '';
+        if (data.key) { 
+          keywords = `<small><span class="badge badge-light font-weight-light">${data.key}</span></small>`
+        }
         return `
-          <div class="m-1">
-            <img class="aws-icons mr-4" src="${imgpath}"><span class="aws-service-name">${data.name}</span>
+          <div class="my-2">
+            <div class="float-left">
+              <img class="aws-icons mr-3" src="${imgpath}">
+            </div>
+            <span class="aws-service-name">${data.name}</span>
+            ${keywords}
           </div>`;
       }
     }
@@ -56,7 +56,7 @@ $('#bloodhound .service-select').typeahead({
   }).bind('typeahead:close', function () {
     var query = document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
     var engine = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: services,
     });
@@ -78,7 +78,7 @@ $('form').submit(function () {
   var query = document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
   if (query.length === 0) return false;
   var engine = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     local: services,
   });
@@ -97,7 +97,7 @@ $('form').submit(function () {
 
 function servicesWithDefaults(q, sync) {
   var engine = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     local: services,
   });
