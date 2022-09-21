@@ -142,7 +142,7 @@ var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/kinesis/home?region={{REGION}}", name: "Kinesis" },
   { url: "https://{{REGION}}.console.aws.amazon.com/firehose/home?region={{REGION}}#/streams", name: "Kinesis Firehose" },
   { url: "https://{{REGION}}.console.aws.amazon.com/kinesisvideo/home?region={{REGION}}", name: "Kinesis Video Streams" },
-  { url: "https://{{REGION}}.console.aws.amazon.com/lambda/home?region={{REGION}}#/functions", name: "AWS Lambda", key: "lambda" },
+  { url: "https://{{REGION}}.console.aws.amazon.com/lambda/home?region={{REGION}}#/functions", name: "AWS Lambda", key: "lmd" },
   { url: "https://{{REGION}}.console.aws.amazon.com/launchwizard/home?region={{REGION}}", name: "Launch Wizard" },
   { url: "https://lightsail.aws.amazon.com/ls/webapp/home", name: "Lightsail" },
   { url: "https://{{REGION}}.console.aws.amazon.com/mwaa/home?region={{REGION}}", name: "Managed Apache Airflow", key: "MWAA" },

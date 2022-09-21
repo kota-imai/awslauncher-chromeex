@@ -122,4 +122,5 @@ function openNewTab(serviceUrl, region) {
 // focus on searchbox
 $('#searchbox').ready(function () {
   $('input:visible').eq(1).select();
+  chrome.runtime.sendMessage({ type: 'set' });
 });
