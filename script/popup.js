@@ -1,24 +1,35 @@
+$('#searchbox').ready(() => {
+  $('input:visible').eq(1).select(); // Move focus onto searchbox
+  chrome.runtime.sendMessage({ type: 'set' }); // Send message to service worker
+});
+
+
 // Region Selector init
-var defaultRegion = 'us-east-1';
+let targetRegion = 'us-east-1';
 if (localStorage.getItem('region')) {
-  defaultRegion = localStorage.getItem('region');
+  targetRegion = localStorage.getItem('region');
 }
-var parentEl = document.getElementsByClassName("region-select")[0];
+const parentEl = document.getElementsByClassName("region-select")[0];
 for (r of REGIONS) {
-  var el = document.createElement("option");
+  const el = document.createElement("option");
   el.innerText = r.name;
   el.setAttribute("value", r.region);
-  if (defaultRegion === r.region) {
+  if (targetRegion === r.region) {
     el.setAttribute('selected', '');
   }
   parentEl.append(el);
 }
 
 
+// Flag to see whether a new tab has already been opened or not
+const isOpened = false;
+// My definition of Bloodhound engine
+const bhEngine = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  local: SERVICES,
+});
 
-// Resource List init
-var opened = 0;
-const services = SERVICES;
 $('#bloodhound .service-select').typeahead({
   hint: true,
   highlight: true,
@@ -28,12 +39,12 @@ $('#bloodhound .service-select').typeahead({
     name: 'name',
     display: 'name',
     limit: 10,
-    source: servicesWithDefaults,
+    source: allServices,
     templates: {
       empty: '<p class="my-2">No results found</p>',
-      suggestion: function (data) {
-        var imgpath = `../assets/${data.name.trim().replaceAll(' ', '')}.png`;
-        var keywords = '';
+      suggestion: (data) => {
+        let imgpath = `../assets/${data.name.trim().replaceAll(' ', '')}.png`;
+        let keywords = '';
         if (data.key) { 
           keywords = `<small><span class="badge badge-light font-weight-light">${data.key}</span></small>`
         }
@@ -47,80 +58,57 @@ $('#bloodhound .service-select').typeahead({
           </div>`;
       }
     }
-  }).bind('typeahead:select', function (ev, suggestion) {
-    var region = document.getElementsByClassName('region-select')[0].value;
-    if (opened > 0) return;
-    openNewTab(suggestion.url, region);
-    opened++;
+  }).bind('typeahead:select', (ev, suggestion) => {
+    if (isOpened) return;
+    openNewTab(suggestion.url, getSelectedRegion());
 
-  }).bind('typeahead:close', function () {
-    var query = document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
-    var engine = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: services,
-    });
-    engine.initialize()
-      .then(function () {
-        engine.search(query, function (results) {
+  }).bind('typeahead:close', () => {
+    const query = getSearchboxText();
+    bhEngine.initialize()
+      .then(() => {
+        bhEngine.search(query, (results) => {
           if (results.length === 0) return;
-          var region = document.getElementsByClassName('region-select')[0].value;
-          if (opened > 0) {
-            return;
-          }
-          openNewTab(results[0].url, region);
-          opened++;
+          if (isOpened) return;
+          openNewTab(results[0].url, getSelectedRegion());
         });
       });
   });
 
-$('form').submit(function () {
-  var query = document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
-  if (query.length === 0) return false;
-  var engine = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: services,
-  });
-  engine.initialize()
-    .then(function () {
-      engine.search(query, function (results) {
-        if (results.length === 0) return false;
-        var region = document.getElementsByClassName('region-select')[0].value;
-        if (opened > 0) return false;
-        openNewTab(results[0].url, region);
-        opened++;
+$('form').submit(() => {
+  const query = getSearchboxText();
+  if (query.length === 0) return;
+  bhEngine.initialize()
+    .then(() => {
+      bhEngine.search(query, (results) => {
+        if (results.length === 0) return;
+        if (isOpened) return;
+        openNewTab(results[0].url, getSelectedRegion());
       });
     })
 });
 
-
-function servicesWithDefaults(q, sync) {
-  var engine = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: services,
-  });
+function allServices(q, sync) {
   if (q.length > 0) {
-    return engine.search(q, sync);
+    return bhEngine.search(q, sync);
   }
-  return sync(engine.all());
+  return sync(bhEngine.all());
 }
 
 function openNewTab(serviceUrl, region) {
-  if (opened > 0) return;
+  if (isOpened) return;
   chrome.runtime.sendMessage({ type: 'open', url: serviceUrl, region: region }, (res) => {
-    // Save in local storage
     if (res.status === 'ok') {
-      opened++;
       localStorage.setItem('region', region);
+      isOpened = true;
       return;
     }
   });
 }
 
-// focus on searchbox
-$('#searchbox').ready(function () {
-  $('input:visible').eq(1).select();
-  chrome.runtime.sendMessage({ type: 'set' });
-});
+function getSelectedRegion() { 
+  return document.getElementsByClassName('region-select')[0].value;
+}
+
+function getSearchboxText() { 
+  return document.querySelector('#form > span > input.form-control.service-select.tt-input').value;
+}
