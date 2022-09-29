@@ -68,7 +68,7 @@ var SERVICES = [
   { url: "https://iq.aws.amazon.com/?utm=csl", name: "AWS IQ" },
   { url: "https://{{REGION}}.console.aws.amazon.com/lakeformation/home?region={{REGION}}", name: "AWS Lake Formation" },
   { url: "https://{{REGION}}.console.aws.amazon.com/license-manager/home?region={{REGION}}", name: "AWS License Manager" },
-  { url: "https://{{REGION}}.console.aws.amazon.com/migrationhub/home?region={{REGION}}", name: "AWS Migration Hub", key: "mgh" },
+  { url: "https://{{REGION}}.console.aws.amazon.com/migrationhub/home?region={{REGION}}", name: "AWS Migration Hub", key: "MGH" },
   { url: "https://console.aws.amazon.com/organizations/home?region={{REGION}}", name: "AWS Organizations" },
   { url: "https://{{REGION}}.console.aws.amazon.com/outposts/home?region={{REGION}}", name: "AWS Outposts" },
   { url: "https://{{REGION}}.console.aws.amazon.com/panorama/home?region={{REGION}}", name: "AWS Panorama" },
@@ -194,4 +194,5 @@ var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/acm/home?region={{REGION}}#", name: "AWS Certificate Manager", key: "ACM" },
   { url: "https://{{REGION}}.console.aws.amazon.com/m2/home?region={{REGION}}#", name: "AWS Mainframe Modernization", key: "M2" },
   { url: "https://{{REGION}}.console.aws.amazon.com/swf/v2/home?region={{REGION}}#", name: "Amazon Simple Workflow Service", key: "SWF" },
+  { url: "https://{{REGION}}.console.aws.amazon.com/mgn/home?region={{REGION}}#", name: "AWS Application Migration Service", key: "MGN" },
 ]
