@@ -22,7 +22,7 @@ for (r of REGIONS) {
 
 
 // Flag to see whether a new tab has already been opened or not
-const isOpened = false;
+let isOpened = 0;
 // My definition of Bloodhound engine
 const bhEngine = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
@@ -59,7 +59,7 @@ $('#bloodhound .service-select').typeahead({
       }
     }
   }).bind('typeahead:select', (ev, suggestion) => {
-    if (isOpened) return;
+    if (isOpened > 0) return;
     openNewTab(suggestion.url, getSelectedRegion());
 
   }).bind('typeahead:close', () => {
@@ -68,7 +68,7 @@ $('#bloodhound .service-select').typeahead({
       .then(() => {
         bhEngine.search(query, (results) => {
           if (results.length === 0) return;
-          if (isOpened) return;
+          if (isOpened > 0) return;
           openNewTab(results[0].url, getSelectedRegion());
         });
       });
@@ -80,9 +80,12 @@ $('form').submit(() => {
   bhEngine.initialize()
     .then(() => {
       bhEngine.search(query, (results) => {
-        if (results.length === 0) return;
-        if (isOpened) return;
+        if (results.length === 0) { 
+          return false;
+        } 
+        if (isOpened > 0) return;
         openNewTab(results[0].url, getSelectedRegion());
+        $( 'form' ).garlic( 'destroy' );
       });
     })
 });
@@ -95,11 +98,11 @@ function allServices(q, sync) {
 }
 
 function openNewTab(serviceUrl, region) {
-  if (isOpened) return;
+  if (isOpened > 0) return;
+  isOpened++;
   chrome.runtime.sendMessage({ type: 'open', url: serviceUrl, region: region }, (res) => {
     if (res.status === 'ok') {
       localStorage.setItem('region', region);
-      isOpened = true;
       return;
     }
   });

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Simple AWS Launcher",
   "description": "Simple popup launcher for hundreds of AWS services. Just press ctrl(cmd)+shift+L, or click an icon to open.",
-  "version": "2.0.8",
+  "version": "2.1.0",
   "background": {
     "service_worker": "script/background.js"
   },

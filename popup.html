@@ -23,19 +23,20 @@
     <!-- SERVICE SEARCH -->
     <div class="m-3">
       <div id="bloodhound" class="form-group">
-        <form method="post" id="form" novalidate>
-          <input id="searchbox" name="service-name" type="url" class="form-control service-select" placeholder="Services.." tabindex="1">
+        <form id="form" data-persist="garlic" data-destroy="false" data-expires="10" method="POST" novalidate>
+          <input id="searchbox" name="service-name" type="text" class="form-control service-select" placeholder="Services.." tabindex="1">
           <input type="submit" style="display: none;">
         </form>
       </div>
     </div>
-
 
     <!-- jQuery -->
     <script src="script/lib/jquery.min.js"></script>
     <!-- typehead -->
     <script src="script/lib/typehead.bundle.js"></script>
     <script src="script/lib/handlebars.js"></script>
+    <!-- Garlic.js -->
+    <script src="script/lib/garlic.min.js"></script>
     <!-- myscript -->
     <script src="data/regions.js"></script>
     <script src="data/services.js"></script>
