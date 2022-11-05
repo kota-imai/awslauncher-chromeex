@@ -41,7 +41,7 @@ $('#bloodhound .service-select').typeahead({
     limit: 10,
     source: allServices,
     templates: {
-      empty: '<p class="my-2">No results found</p>',
+      empty: '<p class="my-2">Not found</p>',
       suggestion: (data) => {
         let imgpath = `../assets/${data.name.trim().replaceAll(' ', '')}.png`;
         let keywords = '';
