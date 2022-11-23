@@ -28,6 +28,10 @@ var REGIONS = [
     region: "ap-south-1"
   },
   {
+    name: "Hyderabad | ap-south-2",
+    region: "ap-south-2"
+  },
+  {
     name: "Osaka | ap-northeast-3",
     region: "ap-northeast-3"
   },
@@ -42,6 +46,10 @@ var REGIONS = [
   {
     name: "Sydney | ap-southeast-2",
     region: "ap-southeast-2"
+  },
+  {
+    name: "Jakarta | ap-southeast-3",
+    region: "ap-southeast-3"
   },
   {
     name: "Tokyo | ap-northeast-1",
@@ -64,6 +72,10 @@ var REGIONS = [
     region: "eu-central-1"
   },
   {
+    name: "Zurich | eu-central-2",
+    region: "eu-central-2"
+  },
+  {
     name: "Ireland | eu-west-1",
     region: "eu-west-1"
   },
@@ -72,12 +84,16 @@ var REGIONS = [
     region: "eu-west-2"
   },
   {
+    name: "Paris | eu-west-3",
+    region: "eu-west-3"
+  },
+  {
     name: "Milan | eu-south-1",
     region: "eu-south-1"
   },
   {
-    name: "Paris | eu-west-3",
-    region: "eu-west-3"
+    name: "Spain | eu-south-2",
+    region: "eu-south-2"
   },
   {
     name: "Stockholm | eu-north-1",
@@ -86,6 +102,10 @@ var REGIONS = [
   {
     name: "Bahrain | me-south-1",
     region: "me-south-1"
+  },
+  {
+    name: "UAE | me-central-1",
+    region: "me-central-1"
   },
   {
     name: "SãoPaulo | sa-east-1",
