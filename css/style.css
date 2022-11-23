@@ -1,5 +1,5 @@
 body {
-  width: 390px;
+  width: 405px;
   font-family: 'Hiragino Kaku Gothic Pro W3','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
 }
 
@@ -22,7 +22,7 @@ header {
 }
 
 .aws-service-name{
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .form-control:focus {

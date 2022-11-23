@@ -85,8 +85,8 @@ var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/cloudformation/home?region={{REGION}}", name: "CloudFormation", key: "CFn" },
   { url: "https://console.aws.amazon.com/cloudfront/home?region={{REGION}}", name: "CloudFront", key: "cfr" },
   { url: "https://{{REGION}}.console.aws.amazon.com/cloudhsm/home?region={{REGION}}", name: "CloudHSM", key: "hsm" },
-  { url: "https://{{REGION}}.console.aws.amazon.com/cloudsearch/home?region={{REGION}}", name: "CloudSearch" },
-  { url: "https://{{REGION}}.console.aws.amazon.com/cloudshell/home?region={{REGION}}", name: "CloudShell" },
+  { url: "https://{{REGION}}.console.aws.amazon.com/cloudsearch/home?region={{REGION}}", name: "CloudSearch"},
+  { url: "https://{{REGION}}.console.aws.amazon.com/cloudshell/home?region={{REGION}}", name: "CloudShell" , key: "shell" },
   { url: "https://{{REGION}}.console.aws.amazon.com/cloudtrail/home?region={{REGION}}", name: "CloudTrail" },
   { url: "https://{{REGION}}.console.aws.amazon.com/cloudwatch/home?region={{REGION}}", name: "CloudWatch" },
   { url: "https://{{REGION}}.console.aws.amazon.com/codesuite/codeartifact/home?region={{REGION}}", name: "CodeArtifact" },
@@ -194,4 +194,5 @@ var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/m2/home?region={{REGION}}#", name: "AWS Mainframe Modernization", key: "M2" },
   { url: "https://{{REGION}}.console.aws.amazon.com/swf/v2/home?region={{REGION}}#", name: "Amazon Simple Workflow Service", key: "SWF" },
   { url: "https://{{REGION}}.console.aws.amazon.com/mgn/home?region={{REGION}}#", name: "AWS Application Migration Service", key: "MGN" },
+  { url: "https://resource-explorer.console.aws.amazon.com/resource-explorer/home?region={{REGION}}#", name: "AWS Resource Explorer"}
 ]
