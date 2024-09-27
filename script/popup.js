@@ -61,17 +61,6 @@ $('#bloodhound .service-select').typeahead({
   }).bind('typeahead:select', (ev, suggestion) => {
     if (isOpened > 0) return;
     openNewTab(suggestion.url, getSelectedRegion());
-
-  }).bind('typeahead:close', () => {
-    const query = getSearchboxText();
-    bhEngine.initialize()
-      .then(() => {
-        bhEngine.search(query, (results) => {
-          if (results.length === 0) return;
-          if (isOpened > 0) return;
-          openNewTab(results[0].url, getSelectedRegion());
-        });
-      });
   });
 
 $('form').submit(() => {
