@@ -52,12 +52,28 @@ var REGIONS = [
     region: "ap-southeast-3"
   },
   {
+    name: "Melbourne | ap-southeast-4",
+    region: "ap-southeast-4"
+  },
+  {
+    name: "Malaysia | ap-southeast-5",
+    region: "ap-southeast-5"
+  },
+  {
+    name: "Thailand | ap-southeast-7",
+    region: "ap-southeast-7"
+  },
+  {
     name: "Tokyo | ap-northeast-1",
     region: "ap-northeast-1"
   },
   {
     name: "CanadaCentral | ca-central-1",
     region: "ca-central-1"
+  },
+  {
+    name: "Canada West | ca-west-1",
+    region: "ca-west-1"
   },
   {
     name: "Beijing | cn-north-1",
@@ -110,6 +126,10 @@ var REGIONS = [
   {
     name: "SãoPaulo | sa-east-1",
     region: "sa-east-1"
+  },
+  {
+    name: "Israel | il-central-1",
+    region: "il-central-1"
   },
   {
     name: "AWSGovCloud | us-gov-east-1",
