@@ -1,6 +1,5 @@
 var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/console/home?region={{REGION}}", name: "Management Console" },
-  { url: "https://console.aws.amazon.com/a4b/home?region={{REGION}}", name: "Alexa for Business" },
   { url: "https://{{REGION}}.console.aws.amazon.com/appflow/home?region={{REGION}}", name: "Amazon AppFlow" },
   { url: "https://{{REGION}}.console.aws.amazon.com/a2i/home?region={{REGION}}", name: "Amazon Augmented AI" },
   { url: "https://{{REGION}}.console.aws.amazon.com/braket/home?region={{REGION}}", name: "Amazon Braket" },
@@ -16,7 +15,6 @@ var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/gamelift/home?region={{REGION}}", name: "Amazon GameLift" },
   { url: "https://console.aws.amazon.com/grafana/home?region={{REGION}}", name: "Amazon Grafana" },
   { url: "https://console.aws.amazon.com/healthlake/home?region={{REGION}}", name: "Amazon HealthLake" },
-  { url: "https://{{REGION}}.console.aws.amazon.com/honeycode/home?region={{REGION}}", name: "Amazon Honeycode" },
   { url: "https://{{REGION}}.console.aws.amazon.com/ivs/home?region={{REGION}}", name: "Amazon Interactive Video Service", key: "IVS" },
   { url: "https://{{REGION}}.console.aws.amazon.com/kendra/home?region={{REGION}}", name: "Amazon Kendra" },
   { url: "https://{{REGION}}.console.aws.amazon.com/keyspaces/home?region={{REGION}}", name: "Amazon Keyspaces", key: "Cassandra MCS" },
@@ -36,7 +34,6 @@ var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/redshiftv2/home?region={{REGION}}", name: "Amazon Redshift" },
   { url: "https://{{REGION}}.console.aws.amazon.com/rekognition/home?region={{REGION}}", name: "Amazon Rekognition" },
   { url: "https://{{REGION}}.console.aws.amazon.com/sagemaker/home?region={{REGION}}", name: "Amazon SageMaker" },
-  { url: "https://{{REGION}}.console.aws.amazon.com/sumerianv2/home?region={{REGION}}", name: "Amazon Sumerian" },
   { url: "https://{{REGION}}.console.aws.amazon.com/textract/home?region={{REGION}}", name: "Amazon Textract" },
   { url: "https://{{REGION}}.console.aws.amazon.com/timestream/home?region={{REGION}}", name: "Amazon Timestream" },
   { url: "https://{{REGION}}.console.aws.amazon.com/transcribe/home?region={{REGION}}", name: "Amazon Transcribe" },
@@ -59,7 +56,6 @@ var SERVICES = [
   { url: "https://console.aws.amazon.com/compute-optimizer/home?region={{REGION}}", name: "AWS Compute Optimizer" },
   { url: "https://console.aws.amazon.com/cost-management/home?region={{REGION}}", name: "AWS Cost Explorer" , key: "CE price"},
   { url: "https://{{REGION}}.console.aws.amazon.com/dataexchange/home?region={{REGION}}", name: "AWS Data Exchange" },
-  { url: "https://console.aws.amazon.com/deepcomposer/home?region={{REGION}}", name: "AWS DeepComposer" },
   { url: "https://console.aws.amazon.com/deeplens/home?region={{REGION}}", name: "AWS DeepLens" },
   { url: "https://console.aws.amazon.com/deepracer/home?region={{REGION}}", name: "AWS DeepRacer" },
   { url: "https://console.aws.amazon.com/wafv2/home?region={{REGION}}", name: "AWS Firewall Manager", key: "fms" },
@@ -72,8 +68,6 @@ var SERVICES = [
   { url: "https://console.aws.amazon.com/organizations/home?region={{REGION}}", name: "AWS Organizations" },
   { url: "https://{{REGION}}.console.aws.amazon.com/outposts/home?region={{REGION}}", name: "AWS Outposts" },
   { url: "https://{{REGION}}.console.aws.amazon.com/panorama/home?region={{REGION}}", name: "AWS Panorama" },
-  { url: "https://{{REGION}}.console.aws.amazon.com/proton/home?region={{REGION}}", name: "AWS Proton" },
-  { url: "https://{{REGION}}.console.aws.amazon.com/robomaker/home?region={{REGION}}", name: "AWS RoboMaker" },
   { url: "https://{{REGION}}.console.aws.amazon.com/signer/home?region={{REGION}}", name: "AWS Signer" },
   { url: "https://{{REGION}}.console.aws.amazon.com/singlesignon/home?region={{REGION}}", name: "AWS Single Sign-On", key: "sso"},
   { url: "https://{{REGION}}.console.aws.amazon.com/snowfamily/home?region={{REGION}}", name: "AWS Snow Family", key: "snowball snowmobile" },
@@ -156,7 +150,6 @@ var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/msk/home?region={{REGION}}", name: "MSK" },
   { url: "https://{{REGION}}.console.aws.amazon.com/msk/home?region={{REGION}}#/clusters", name: "MSK Clusters", key: "kafka" },
   { url: "https://{{REGION}}.console.aws.amazon.com/neptune/home?region={{REGION}}", name: "Neptune" },
-  { url: "https://console.aws.amazon.com/opsworks/landing/home?region={{REGION}}", name: "OpsWorks" },
   { url: "https://health.aws.amazon.com/health/home#/account/dashboard", name: "AWS Health Dashboard" },
   { url: "https://{{REGION}}.console.aws.amazon.com/pinpoint/home?region={{REGION}}", name: "Pinpoint" },
   { url: "https://quicksight.aws.amazon.com/", name: "QuickSight" },
@@ -194,5 +187,17 @@ var SERVICES = [
   { url: "https://{{REGION}}.console.aws.amazon.com/m2/home?region={{REGION}}#", name: "AWS Mainframe Modernization", key: "M2" },
   { url: "https://{{REGION}}.console.aws.amazon.com/swf/v2/home?region={{REGION}}#", name: "Amazon Simple Workflow Service", key: "SWF" },
   { url: "https://{{REGION}}.console.aws.amazon.com/mgn/home?region={{REGION}}#", name: "AWS Application Migration Service", key: "MGN" },
-  { url: "https://resource-explorer.console.aws.amazon.com/resource-explorer/home?region={{REGION}}#", name: "AWS Resource Explorer"}
+  { url: "https://resource-explorer.console.aws.amazon.com/resource-explorer/home?region={{REGION}}#", name: "AWS Resource Explorer"},
+  // --- NEW GENERATIVE AI & ASSISTANTS added on Mar.2026 ---
+  { url: "https://{{REGION}}.console.aws.amazon.com/bedrock/home?region={{REGION}}#/", name: "Amazon Bedrock", key: "llm claude" },
+  { url: "https://{{REGION}}.console.aws.amazon.com/amazonq/home?region={{REGION}}", name: "Amazon Q", key: "chatbot" },
+  { url: "https://{{REGION}}.console.aws.amazon.com/transcribe/home?region={{REGION}}", name: "AWS HealthScribe" },
+  // --- DATA GOVERNANCE & PRIVACY added on Mar.2026 ---
+  { url: "https://{{REGION}}.console.aws.amazon.com/datazone/home?region={{REGION}}", name: "Amazon DataZone" },
+  { url: "https://{{REGION}}.console.aws.amazon.com/cleanrooms/home?region={{REGION}}#/", name: "AWS Clean Rooms" },
+  // --- CONNECTIVITY & NETWORKING added on Mar.2026 ---
+  { url: "https://{{REGION}}.console.aws.amazon.com/vpcconsole/home?region={{REGION}}#Services:", name: "VPC Lattice" },
+  { url: "https://{{REGION}}.console.aws.amazon.com/vpcconsole/home?region={{REGION}}#VerifiedAccessInstances:", name: "AWS Verified Access" },
+  // --- RECENT COMPUTE / DEVELOPER added on Mar.2026 ---
+  { url: "https://{{REGION}}.console.aws.amazon.com/systems-manager/incidents/prepare/home?region={{REGION}}#/", name: "AWS Incident Manager" }
 ]
