@@ -1,14 +1,31 @@
-chrome.runtime.onMessage.addListener(
-  function (message, sender, sendResponse) {
-    // Start service worker before the request
-    if (message.type === 'set') {
-      sendResponse({});
-    }
-    // open URL in another tab
-    if (message.type === 'open') {
-      const url = message.url.replaceAll('{{REGION}}', message.region);
-      chrome.tabs.create({ url: url });
-      sendResponse({ status: 'ok' });
-    }
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  const { type } = message;
+
+  switch (type) {
+    case 'set':
+      handleSet(sendResponse);
+      break;
+
+    case 'open':
+      handleOpen(message, sendResponse);
+      return true;
+
+    default:
+      sendResponse({ error: 'Unknown message type' });
   }
-) 
+});
+
+function handleSet(sendResponse) {
+  sendResponse({});
+}
+
+async function handleOpen(message, sendResponse) {
+  const { url, region } = message;
+
+  const targetUrl = url.replaceAll('{{REGION}}', region);
+
+  await chrome.tabs.create({ url: targetUrl });
+  await chrome.storage.local.set({ region });
+
+  sendResponse({});
+}

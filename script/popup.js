@@ -4,25 +4,37 @@ $('#searchbox').ready(() => {
 });
 
 
-// Region Selector init
+// Region Selector
 let targetRegion = 'us-east-1';
-if (localStorage.getItem('region')) {
+
+// Carry over the region value stored in localStorage used former version
+if (localStorage.getItem('region')){
   targetRegion = localStorage.getItem('region');
+  localStorage.removeItem('region');
 }
-const parentEl = document.getElementsByClassName("region-select")[0];
-for (r of REGIONS) {
-  const el = document.createElement("option");
-  el.innerText = r.name;
-  el.setAttribute("value", r.region);
-  if (targetRegion === r.region) {
-    el.setAttribute('selected', '');
+
+// Get the last used region
+chrome.storage.local.get(["region"]).then((result) => {
+  if (result.region){
+    targetRegion = result.region;
   }
-  parentEl.append(el);
-}
+  // List available regions
+  const parentEl = document.getElementsByClassName("region-select")[0];
+  for (const r of REGIONS) {
+    const el = document.createElement("option");
+    el.innerText = r.name;
+    el.setAttribute("value", r.region);
+    if (targetRegion === r.region) {
+      el.setAttribute('selected', '');
+    }
+    parentEl.append(el);
+  }
+});
 
 
-// Flag to see whether a new tab has already been opened or not
-let isOpened = 0;
+// Flag to see whether a new tab has already been opened or not,
+let isOpened = 0; // Remain numeric for appropriate behavior 
+
 // My definition of Bloodhound engine
 const bhEngine = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key', 'name'),
@@ -86,14 +98,11 @@ function allServices(q, sync) {
   return sync(bhEngine.all());
 }
 
-function openNewTab(serviceUrl, region) {
+function openNewTab(serviceUrl, selectedRegion) {
   if (isOpened > 0) return;
   isOpened++;
-  chrome.runtime.sendMessage({ type: 'open', url: serviceUrl, region: region }, (res) => {
-    if (res.status === 'ok') {
-      localStorage.setItem('region', region);
-      return;
-    }
+  chrome.runtime.sendMessage({ type: 'open', url: serviceUrl, region: selectedRegion }, (res) => {
+    return;
   });
 }
 
